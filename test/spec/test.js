@@ -48,8 +48,8 @@
       describe("has an .add() method",function(){
         it("should add the object it's given to the models property", function(){
         	var students = new Collection ([{name:'Jim', id:'99'}]);
-        	students.add({name:'Toddy', id:'7'});
-        	expect(students.models[0]).to.equal({name:'Toddy', id:'7'});
+        	  students.add({name:'Toddy', id:'7'});
+        	  expect(students.models[1]).to.deep.equal({name:'Toddy', id:'7'});
         });
         it("should increase the models property's length by 1", function(){ 
         	var students = new Collection([{name: 'Jim', id: '99'}]);
@@ -69,16 +69,35 @@
         });
       });
  	
+
+
       describe("has a .remove() method",function(){
         it("should, when given an id, remove the corresponding object from the models property", function(){
         	var students = new Collection ([{name: 'Jim', id: '99'}]);
         	students.remove('99');
         	expect(students.models[0]).to.be.equal(undefined);
         });
-        it("should decrease the models property's length by 1");
-        it("should only accept a single string as an id argument");
-        it("should return true on successful removal");
+        it("should decrease the models property's length by 1", function(){ 
+        	var students = new Collection([{name: 'Jim', id: '99'}]);
+        	var startLength = students.models.length;
+        	students.remove([{name:'Jim', id: '99'}]);
+        	expect(function(){students.models.length}).to.be.equal(startLength - 1);
+        	});
+        it("should only accept a single string as an id argument", function(){
+        	var students = new Collection([{name: 'Jim', id: '99'}]);
+        });
+        	
+
+        it("should return true on successful removal", function(){
+        	var students = new Collection([{name: 'Jim', id: '99'}]);
+        });
       });
+
+
+
+
+
+
 
       describe('has an .empty() method', function(){
 		it('should clear out the models array');

@@ -23,9 +23,9 @@ function Collection (models) {
   };
 
   this.add=function(newStudent){
-  	this.models = (newStudent);
+  	this.models.push(newStudent);
   }
-}
+};
  
  
 
