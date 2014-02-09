@@ -1,37 +1,66 @@
 console.log('\'Allo \'Allo!');
 
-// Collections spec
+
+function Collection (models) {
+	this.models = models || [];
+	this.find = function (id) {
+		var result;
+
+		if (typeof(id) != 'string') {
+			throw new Error("whoops");
+		}
+	
+
+	this.models.forEach(function(value, index){
+      if (value.id == id) {
+        result = value;
+      }
+    });
  
-// should make a new instance of a collection
-students = new Collection();
- 
- 
-// if given an array, it should store array
-// in a property called "models"
-var quarterOne2014 = [
-  {
-    name: 'Bower',
-    id: '1'
-  },
-  {
-    name: 'Jack',
-    id: '2'
+    if (result) {
+      return result;
+    }
   }
-]
-students = new Collection(quarterOne2014)
-// so this would return
-{
-  models: [{name: 'Bower', id: '1'},{name: 'Jack', id:'2'}]
 }
  
  
+
+ 
 // a Collection has a .find() method that searches by ID
-students.find('1') // should return {name: 'Bower', id: '1'}
+// students.find('1') // should return {name: 'Bower', id: '1'}
  
 // a Collection has an .add() method that takes an object literal,
 // and adds it to the models array
-students.add({name: 'jimmy', id:'3'})
+// students.add({name: 'jimmy', id:'3'})
  
 // a Collection has a .remove() method that takes an id,
 // and removes it from the models array
-students.remove('3')
+// students.remove('3')
+
+
+
+
+
+
+// function Ugh(result, days) {
+// 	return "I saved" + " " + result + " " + "in" + days + "s" 
+
+// 	return function(){
+// 		var result = 1;
+// 		var days = 0;
+// 		while (days <= 31){
+// 			result = result * 2;
+// 			days = days + 1;
+// 		};
+// 	};
+
+
+// };
+
+
+
+
+
+
+
+
