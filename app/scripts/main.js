@@ -20,6 +20,10 @@ function Collection (models) {
     if (result) {
       return result;
     }
+  };
+
+  this.add=function(newStudent){
+  	this.models = (newStudent);
   }
 }
  
