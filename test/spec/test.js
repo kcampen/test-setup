@@ -55,13 +55,13 @@
         	var students = new Collection([{name: 'Jim', id: '99'}]);
         	var startLength = students.models.length;
         	students.add({name: 'Toddy', id: '7'});
-        	expect(function(){students.models.length}).to.be.equal(startLength + 1);
+        	expect(function(){students.models.length}).to.equal(2);
         	});
         it("should only accept a single object as an argument");
 
         it("should throw an error if given an empty object as an argument", function(){
         	var students = new Collection([{name: 'Jim', id: '99'}]);
-        	expect(function(){students.add([{}])}).to.throw(Error);
+        	expect(function(){students.add({})}).to.throw(Error);
         	});
         it("should throw an error when given an object without and id property", function(){
         	var students = new Collection([{name: 'Jim', id: '99'}]);

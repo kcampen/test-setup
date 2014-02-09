@@ -1,5 +1,3 @@
-console.log('\'Allo \'Allo!');
-
 
 function Collection (models) {
 	this.models = models || [];
@@ -22,9 +20,18 @@ function Collection (models) {
     }
   };
 
-  this.add=function(newStudent){
+  this.add = function(newStudent){
+
+  	if (_.isEmpty(newStudent)) {
+  		throw new Error('Empty argument')
+  	};
+
+    if (!newStudent.hasOwnProperty('id')) {
+      throw new Error('does not have id')
+    }
+
   	this.models.push(newStudent);
-  }
+  };
 };
  
  
