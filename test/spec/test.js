@@ -98,8 +98,7 @@
     describe('has an .empty() method', function(){
 		  it('should clear out the models array', function(){ 
         var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
-        students.empty();
-        expect(students.models.empty).to.equal([]);
+        expect(students.empty).to.equal([]);
         });
 		});
 
@@ -111,7 +110,7 @@
 	});
 
 	describe('has a .length() method', function(){
-		it('should reutrn the length models array', function(){
+		it('should reutrn the length of models array', function(){
       var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
       expect(students.length()).to.equal(students.models.length)
     });
