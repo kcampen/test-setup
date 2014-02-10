@@ -36,7 +36,6 @@ function Collection (models) {
 
   this.remove = function(idRemove){
 
-    var lengthTest = [idRemove];
 
     if (idRemove == undefined) {
       throw new Error(error);
@@ -45,6 +44,11 @@ function Collection (models) {
     if(typeof(idRemove)!== 'string'){
       throw new Error ('the id is not a string');
     }
+
+    this.models = _.reject(this.models, function(idNumber){
+        return idNumber.id === idRemove;
+        return true;
+      });
 
     return true;
 

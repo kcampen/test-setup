@@ -65,7 +65,7 @@
         	});
         it("should throw an error when given an object without and id property", function(){
         	var students = new Collection([{name: 'Jim', id: '99'}]);
-        	expect(function(){students.add([{name: 'string', id: ''}])}).to.throw(Error);
+        	expect(function(){students.add([{name: 'string'}])}).to.throw(Error);
         });
       });
  	
