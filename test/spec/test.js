@@ -57,7 +57,7 @@
             students.add({name: 'Toddy', id: '7'});
         	expect(students.models.length).to.equal(startLength + 1);
         	});
-        it("should only accept a single object as an argument");
+        // it("should only accept a single object as an argument"); no idea about this one
 
         it("should throw an error if given an empty object as an argument", function(){
         	var students = new Collection([{name: 'Jim', id: '99'}]);
@@ -102,17 +102,23 @@
     describe('has an .empty() method', function(){
 		  it('should clear out the models array', function(){ 
         var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
-        students.empty(students.models);
-        expect(_.isEmpty(students.models)).to.equal(true)
+        students.empty();
+        expect(students.models).to.equal([]);
         });
 		});
 
 	 describe("has an .random() method", function(){
-		it ('should return a random object from the models array');
+		it ('should return a random object from the models array', function(){ 
+    var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
+     expect(_.contains(students.models, students.random())).to.equal(true)
+     });
 	});
 
 	describe('has a .length() method', function(){
-		it('should reutrn the length models array');
+		it('should reutrn the length models array', function(){
+      var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
+      expect(students.length()).to.equal(students.models.length)
+    });
 	});
 
     })

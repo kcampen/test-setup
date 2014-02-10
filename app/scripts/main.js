@@ -49,6 +49,12 @@ function Collection (models) {
     return true;
 
   }
+
+  this.random = function(x){
+        x = x || 1;
+    return _.sample (this.models, x)
+
+  }
 };
  
  
