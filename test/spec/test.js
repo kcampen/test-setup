@@ -53,9 +53,9 @@
         });
         it("should increase the models property's length by 1", function(){ 
         	var students = new Collection([{name: 'Jim', id: '99'}]);
-        	var startLength = students.models.length;
-        	students.add({name: 'Toddy', id: '7'});
-        	expect(function(){students.models.length}).to.equal(2);
+        	  var startLength = students.models.length;
+            students.add({name: 'Toddy', id: '7'});
+        	expect(students.models.length).to.equal(startLength + 1);
         	});
         it("should only accept a single object as an argument");
 
@@ -73,34 +73,38 @@
 
       describe("has a .remove() method",function(){
         it("should, when given an id, remove the corresponding object from the models property", function(){
-        	var students = new Collection ([{name: 'Jim', id: '99'}]);
-        	students.remove('99');
-        	expect(students.models[0]).to.be.equal(undefined);
+        	var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
+        	students.remove('7');
+        	expect(students.models[1]).to.be.equal(undefined);
         });
         it("should decrease the models property's length by 1", function(){ 
-        	var students = new Collection([{name: 'Jim', id: '99'}]);
-        	var startLength = students.models.length;
-        	students.remove([{name:'Jim', id: '99'}]);
-        	expect(function(){students.models.length}).to.be.equal(startLength - 1);
+        	var students = new Collection([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
+        	students.remove('7');
+        	expect(students.models.length).to.be.equal(1);
         	});
         it("should only accept a single string as an id argument", function(){
         	var students = new Collection([{name: 'Jim', id: '99'}]);
-        });
-        	
 
+          expect(function(){students.remove(1)}).to.throw(Error);
+          expect(function(){students.remove({})}).to.throw(Error);
+          expect(function(){students.remove([])}).to.throw(Error);
+
+        });
         it("should return true on successful removal", function(){
-        	var students = new Collection([{name: 'Jim', id: '99'}]);
+        	var students = new Collection([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
+          expect(students.remove('99')).to.equal(true);
         });
       });
 
 
 
 
-
-
-
-      describe('has an .empty() method', function(){
-		it('should clear out the models array');
+    describe('has an .empty() method', function(){
+		  it('should clear out the models array', function(){ 
+        var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
+        students.empty(students.models);
+        expect(_.isEmpty(students.models)).to.equal(true)
+        });
 		});
 
 	 describe("has an .random() method", function(){

@@ -22,6 +22,8 @@ function Collection (models) {
 
   this.add = function(newStudent){
 
+    this.models.push(newStudent);
+
   	if (_.isEmpty(newStudent)) {
   		throw new Error('Empty argument')
   	};
@@ -30,8 +32,23 @@ function Collection (models) {
       throw new Error('does not have id')
     }
 
-  	this.models.push(newStudent);
   };
+
+  this.remove = function(idRemove){
+
+    var lengthTest = [idRemove];
+
+    if (idRemove == undefined) {
+      throw new Error(error);
+    }
+
+    if(typeof(idRemove)!== 'string'){
+      throw new Error ('the id is not a string');
+    }
+
+    return true;
+
+  }
 };
  
  
