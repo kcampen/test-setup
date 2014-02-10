@@ -55,14 +55,12 @@ function Collection (models) {
   }
 
   this.empty = function(){
-      this.models = []
+      this.models = [];
       return true;
   }
 
   this.random = function(x){
-        x = x || 1;
-    return _.sample (this.models)
-
+    return _.sample(this.models);
   }
 
   this.length = function(){

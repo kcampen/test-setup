@@ -95,26 +95,35 @@
       });
 
 
-    describe('has an .empty() method', function(){
-		  it('should clear out the models array', function(){ 
-        var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
-        expect(students.empty).to.equal([]);
+      describe('has an .empty() method', function(){
+  		  it('should clear out the models array', function(){ 
+          var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
+
+          // try emptying the array
+          students.empty();
+
+          expect(students.models.length).to.equal(0);
         });
-		});
+  		});
 
-	 describe("has an .random() method", function(){
-		it ('should return a random object from the models array', function(){ 
-    var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
-     expect(_.contains(students.models, students.random())).to.equal(true)
-     });
-	});
+    	describe("has an .random() method", function(){
+    		it ('should return a random object from the models array', function(){ 
 
-	describe('has a .length() method', function(){
-		it('should reutrn the length of models array', function(){
-      var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
-      expect(students.length()).to.equal(students.models.length)
-    });
-	});
+          // first, create a collection called students
+          var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
+          
+          // then make sure that students.random() returns something
+          // that is found in the students.models array
+          expect(_.contains(students.models, students.random())).to.equal(true)
+        });
+    	});
+
+    	describe('has a .length() method', function(){
+    		it('should reutrn the length of models array', function(){
+          var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}, {name: 'Bandit', id: '21'}]);
+          expect(students.length()).to.equal(students.models.length)
+        });
+    	});
 
     })
 
