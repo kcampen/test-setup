@@ -54,10 +54,18 @@ function Collection (models) {
 
   }
 
+  this.empty = function(){
+      this.models = []
+  }
+
   this.random = function(x){
         x = x || 1;
     return _.sample (this.models, x)
 
+  }
+
+  this.length = function(){
+    return this.models.length;
   }
 };
  

@@ -19,7 +19,7 @@
  
         });
     });
- 
+
     describe("A Collection instance", function(){
       describe("has a .find() method",function(){
         it("should return an object when given an id that is present in the models", function(){
@@ -69,8 +69,6 @@
         });
       });
  	
-
-
       describe("has a .remove() method",function(){
         it("should, when given an id, remove the corresponding object from the models property", function(){
         	var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
@@ -97,13 +95,11 @@
       });
 
 
-
-
     describe('has an .empty() method', function(){
 		  it('should clear out the models array', function(){ 
         var students = new Collection ([{name: 'Jim', id: '99'}, {name: 'Toddy', id: '7'}]);
         students.empty();
-        expect(students.models).to.equal([]);
+        expect(students.models.empty).to.equal([]);
         });
 		});
 
